@@ -1,0 +1,44 @@
+# local service
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR, SOCK_DGRAM
+import time
+local_port = 21000
+local_ip='10.0.2.3'
+
+def server():
+    server_port = local_port
+    server_socket = socket(AF_INET, SOCK_STREAM)
+    server_socket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+    server_socket.bind(('', server_port))
+    server_socket.listen(10)
+    print(local_ip, 'The server is ready to receive')
+    while True:
+        connectionSocket, addr = server_socket.accept()
+        print(addr, 'success connection')
+        time.sleep(1)
+        for i in range(5):
+            msg = connectionSocket.recv(1024)
+            if(len(msg.decode())==0):
+            	break
+            print(msg.decode())
+            mssg = 'ss1'
+            connectionSocket.send(mssg.encode())
+
+
+def server_udp():
+    server_port = local_port
+    server_socket = socket(AF_INET, SOCK_DGRAM)
+    server_socket.bind(('', server_port))
+
+    print(local_ip, 'The server is ready to receive: UDP')
+
+    while True:
+        message, client_address = server_socket.recvfrom(20480)
+        print (message.decode())
+        modifiedMessage = "Hello, I AM server_1"
+        server_socket.sendto(modifiedMessage.encode(), client_address)
+        print (client_address)
+
+
+if __name__ == '__main__':
+    server();
+    #server_udp();
