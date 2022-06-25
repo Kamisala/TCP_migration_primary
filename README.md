@@ -8,12 +8,12 @@ Introduction:
     program aim: client create tcp connection with server1,and send 5 packets to server1; h2 will migrate tcp to server2 after client create the tcp connnection with server1, and migrate the above 5 packets to  server2; server2 receive pactets and respond client.
 
 Usage:
-    1,Open virtual machine terminal
-    2，running mn.py - > input : xterm h1 h2 h3 h4 
-    3,in h2 terminal: running nf.py
-    4.in h3 terminal: running s1.py
-    5,in h4 terminal: running s2.py
-    6,in h1 terminal: running c1.py
+    1,Open virtual machine terminal.
+    2，running mn.py - > input : xterm h1 h2 h3 h4 (enter).
+    3,in h2 terminal: running nf.py.
+    4.in h3 terminal: running s1.py.
+    5,in h4 terminal: running s2.py.
+    6,in h1 terminal: running c1.py.
 Attition:
     There are some defects in this version: 
     1. The requirement to disconnect TCP is not considered after running. If you want to use the client again, you need to close the entire mininet and try again (this is recommended). 
