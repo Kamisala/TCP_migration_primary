@@ -1,5 +1,5 @@
 # local service
-from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR, SOCK_DGRAM
+from socket import socket, AF_INET, SOCK_STREAM, SOL_SOCKET, SO_REUSEADDR, SOCK_DGRAM, IPPROTO_TCP, TCP_NODELAY
 import time
 
 local_port = 21000
@@ -12,18 +12,15 @@ def server():
     server_socket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     server_socket.bind(('', server_port))
     server_socket.listen(2)
+    
     print(local_ip, 'The server is ready to receive')
     while True:
         connectionSocket, addr = server_socket.accept()
         print(addr, 'success connection')
-        time.sleep(1)
-        for i in range(6):
-            msg = connectionSocket.recv(1024)
-            if(len(msg.decode())==0):
-            	break
+        for i in range(5):
+            msg = connectionSocket.recv(160)
             print(msg.decode())
-            
-            mssg = 'ss2'
+            mssg = 'Hello, I am Server2'
             connectionSocket.send(mssg.encode())
 
 
@@ -37,11 +34,13 @@ def server_udp():
     while True:
         message, client_address = server_socket.recvfrom(20480)
         print (message.decode())
-        modifiedMessage = "Hello, I AM server_2"
+        modifiedMessage = "Hello, I am Server_2"
+        print(time.time())
         #server_socket.sendto(modifiedMessage.encode(), client_address)
         #print (client_address)
 
 
 if __name__ == '__main__':
     server();
-    #server_udp();
+# server_udp();
+

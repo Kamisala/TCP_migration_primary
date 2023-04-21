@@ -91,6 +91,7 @@ def print_and_accept(pkt):
                     pkt.set_payload(bytes(ip))
                     pkt.accept()
                     print ('change and accept')
+                    
 
             elif ip.src == '10.0.2.4' and ip.dst == '10.0.1.1':
                 # 更改seq 原地址
@@ -102,6 +103,7 @@ def print_and_accept(pkt):
                 pkt.set_payload(bytes(ip))
                 pkt.accept()
                 print ('change and accept')
+    print ('')
 
 
 if __name__ == '__main__':
@@ -115,6 +117,8 @@ if __name__ == '__main__':
 
     nfqueue.unbind()
 
-# 瞎猜导致花费大量时间去验证，有点low。。。
-# 完成版
+# 完成版- 老版- 待更新
+# 客户端可发送转移到server2
+# 未完成： server2回应字段包收不到， 仅从第四个包开始转发到server2 没有考虑四次挥手
+
 
