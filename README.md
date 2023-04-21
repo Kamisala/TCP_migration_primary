@@ -49,4 +49,4 @@ We can see that: h1 has esatblished a tcp connection with h3.
 
 # 4. Waiting:
 ![截屏2023-04-21 下午12 01 10](https://user-images.githubusercontent.com/105418310/233537961-2e97fd4b-cb77-46fe-b1e9-6f94990c64bc.jpg)
-We can see that: h4 established a same tcp connection with h1, and there are 5 tcp data interactions between h1 and h4.
+We can see that: h4 was migrated a same tcp connection with h1, and there are 5 tcp data interactions between h1 and h4.
